@@ -22,7 +22,7 @@ angular.module('app').factory('listFactory', function () {
 
   service.addList = function (listName) {
     if (listName) {
-    
+
     lists.push({
       id: _.uniqueId('list_'),   //lodash function for adding uniq. id for list
       listName: listName
@@ -31,6 +31,9 @@ angular.module('app').factory('listFactory', function () {
   else alert ('Please, enter name of list');
   };
 
+  service.removeList = function (list) {
+    _.pull(lists, list);    // lodash function for removing list
+  }
 
 
   return service;
