@@ -15,8 +15,21 @@
 
       <section class="basis" ng-controller="listsCtrl as listsCtrl" >
           <section class="lists" ng-repeat="list in listsCtrl.lists" ng-controller="listCtrl as listCtrl">
+
+            <div class="listNameConteiner">
+
+
             <h2  >{{list.listName}}</h2>
             <i class="fa fa-times" aria-hidden="true" ng-click="listCtrl.removeList(list)"></i>
+
+          </div>
+
+
+            <div class="card" ng-repeat="card in listCtrl.getCards(list)">
+              {{card.description}}
+            </div>
+
+
 
           </section>
           <section class="addList">
@@ -34,5 +47,7 @@
       <script type="text/javascript" src="js/controllers/listsCtrl.js"></script>
       <script type="text/javascript" src="js/factories/listFactory.js"></script>
       <script type="text/javascript" src="js/controllers/listCtrl.js"></script>
+      <script type="text/javascript" src="js/factories/cardFactory.js"></script>
+
   </body>
 </html>

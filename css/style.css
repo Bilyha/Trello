@@ -16,16 +16,23 @@ header h1 {
 
 .lists {
   display: inline-flex;
+  flex-direction: column;
   /*margin-right: 20px;*/
   border: 1px #7a7a7a solid;
   border-radius: 5px;
   width: 270px;
-  height:80px;
+  min-height:40px;
   background: #dbdada;
+  
+  margin: 5px;
 }
 
 .lists h2{
   margin: 0 auto;
+}
+
+.listNameConteiner {
+  display: inline-flex;
 }
 
 .basis{
@@ -47,7 +54,16 @@ border: 1px solid black;
 }
 
 .fa-times{
-  cursor: pointer; 
+  cursor: pointer;
+}
+
+.card{
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 4px;
+    margin: 5px 10px;
+    border: 1px solid #b9b9b9;
+
 }
 
 
