@@ -22,6 +22,23 @@ angular.module('app').factory('cardFactory', function () {
 
   service.getCards = function (list) {
     return _.filter(cards, {list_id: list.id}); //lodash function, returning ab array of predicate returns truthy for list_id = list.id
+  };
+
+  service.createCard = function (list, cardDescription) {
+    cards.push({
+      id: _.uniqueId('card_'),
+      description: cardDescription,
+      list_id: list.id
+    });
+  };
+
+  service.deleteCard = function (card) {
+      return _.pull(cards, card);
+  };
+
+  service.updateCard = function (updatingCard) {
+    const card = _.findWhere(cards, {id: updatingCard.id} );
+    card.description = updatingCard.description;
   }
   return service;
-})
+});

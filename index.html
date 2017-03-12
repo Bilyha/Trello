@@ -17,18 +17,32 @@
           <section class="lists" ng-repeat="list in listsCtrl.lists" ng-controller="listCtrl as listCtrl">
 
             <div class="listNameConteiner">
-
-
-            <h2  >{{list.listName}}</h2>
-            <i class="fa fa-times" aria-hidden="true" ng-click="listCtrl.removeList(list)"></i>
-
-          </div>
-
-
-            <div class="card" ng-repeat="card in listCtrl.getCards(list)">
-              {{card.description}}
+              <h2  >{{list.listName}}</h2>
+              <i class="fa fa-times " aria-hidden="true" ng-click="listCtrl.removeList(list)"></i>
             </div>
 
+            <div class="card" ng-repeat="card in listCtrl.getCards(list)" ng-controller="cardCtrl as cardCtrl">
+              <div ng-if="!cardCtrl.editFlag">
+                <div class="cardIconWrapp">
+                  <i class="fa fa-times" aria-hidden="true" ng-click="cardCtrl.deleteCard(card)"></i>
+                  <i class="fa fa-pencil" aria-hidden="true" ng-click="cardCtrl.editCard(card)"></i>
+                </div>
+                  <p>{{card.description}}</p>
+
+
+              </div>
+              <div ng-if="cardCtrl.editFlag">
+                <form ng-submit='cardCtrl.updateCard(card)'>
+                  <input type="text" ng-model="cardCtrl.editingCard.description">
+                </form>
+              </div>
+            </div>
+
+            <section>
+                <form class="" ng-submit="listCtrl.createCard(list)">
+                  <input class="new_card_input"type="text" placeholder="New card" ng-model="listCtrl.cardDescription">
+                </form>
+            </section>
 
 
           </section>
@@ -48,6 +62,7 @@
       <script type="text/javascript" src="js/factories/listFactory.js"></script>
       <script type="text/javascript" src="js/controllers/listCtrl.js"></script>
       <script type="text/javascript" src="js/factories/cardFactory.js"></script>
+      <script type="text/javascript" src="js/controllers/cardCtrl.js"></script>
 
   </body>
 </html>
