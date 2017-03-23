@@ -1,0 +1,21 @@
+angular.module('app').factory('serverFactory', function ($http) {
+  const service = {};
+
+
+    service.getPersons = () =>
+    {
+      const persons = $http.get('http://localhost:3005/persons')
+    .success(function (result) {
+      return result;
+    })
+    return persons;
+}
+return service;
+
+
+
+angular.module('app').controller('authorCtrl', function ($http, serverFactory ) {
+  console.log(serverFactory.getPersons());
+
+
+});

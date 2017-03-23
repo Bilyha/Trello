@@ -2,7 +2,7 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8">
-    <title>trello</title>
+    <title>Trello</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="Trello-128.png" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
@@ -10,11 +10,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"  rel="stylesheet">
   </head>
   <body ng-cloak>
-      <header>
-        <h1>Trello</h1>
+      <header ng-controller="authorCtrl as authorCtrl">
+        <h1><i class="fa fa-trello" aria-hidden="true"></i>Trello</h1>
+        <form id="LogSig">
+          <div class="inputAuth">
+            <input type="text" placeholder="Login" ng-model="login">
+            <input type="password" placeholder="Password" ng-model="password">
+          </div>
+          <div class="buttonAuth">
+            <input type="button" value="Log In" ng-click="authorCtrl.LogIn(login, password)">
+            <input type="button" value="Sign Up" ng-click="authorCtrl.SignUp(login, password)">
+          </div>
+
+        </form>
+        <h2 id="login"> Login: {{login}}</h2>
       </header>
 
-      <section class="basis" ng-controller="listsCtrl as listsCtrl" >
+      <section id="forAuth" class="basis" ng-controller="listsCtrl as listsCtrl" >
 
           <section class="lists" ng-repeat="list in listsCtrl.lists" ng-controller="listCtrl as listCtrl">
 
@@ -44,7 +56,7 @@
 
             <section>
                 <form class="" ng-submit="listCtrl.createCard(list)">
-                  <input class="new_card_input"type="text" placeholder="New card" ng-model="listCtrl.cardDescription">
+                  <input class="new_card_input"type="text" placeholder="Add new card..." ng-model="listCtrl.cardDescription">
                 </form>
             </section>
 
@@ -53,7 +65,7 @@
 
           <section class="addList">
             <form class="addForm" ng-submit="listsCtrl.addList()">
-              <input type="text" ng-model="listsCtrl.listName" ></input>
+              <input type="text" ng-model="listsCtrl.listName" placeholder="Add new list..."></input>
             </form>
           </section>
 
@@ -68,5 +80,7 @@
       <script type="text/javascript" src="js/factories/cardFactory.js"></script>
       <script type="text/javascript" src="js/controllers/cardCtrl.js"></script>
       <script type="text/javascript" src="js/directives/editingDirective.js"></script>
+      <script type="text/javascript" src="js/controllers/authorCtrl.js"></script>
+      <script type="text/javascript" src="js/factories/serverFactory.js"></script>
   </body>
 </html>

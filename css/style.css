@@ -1,16 +1,42 @@
 body {
   margin: 0;
+  background-color: rgb(0, 121, 191);
 }
 
 header {
-  background: #047cf7;
+  background: #0067a2;
   padding: 5px 40px ;
 }
 header h1 {
   font-family: 'Ranga', cursive;
   color: #aeacac;
   margin: 0 auto;
+  display: inline-flex;
+  font-size: 50px;
 }
+
+header input {
+border-radius: 5px;
+}
+
+.inputAuth input {
+  width: 100px;
+}
+
+.buttonAuth {
+  margin-top: 5px;
+}
+
+.buttonAuth input {
+  width: 104px;
+  padding: 1px 0px;
+}
+
+header form {
+  float: right;
+}
+
+
 
 .lists {
   display: inline-flex;
@@ -47,7 +73,7 @@ margin-left: 50px
 .addList {
   display: inline-flex;
 height: 100px;
-background: #047cf7;
+background: #dbdada;
 border-radius: 10px;
 border: 1px solid black;
 }
@@ -104,6 +130,21 @@ border: 1px solid black;
 
 .editcardInput {
   border-radius: 4px;
+}
+
+#forAuth {
+  display:none;
+}
+
+#login {
+  border: #0067a2 3px solid;
+  display: none;
+  float: right;
+  padding: 5px;
+  margin: 10px 50px;
+  border-radius: 10px;
+  color: #3f3b3b;
+  background-color: #3788b7;
 }
 
 

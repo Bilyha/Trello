@@ -2,18 +2,18 @@ angular.module('app').factory('listFactory', function () {
   const service = {};
 
   const lists = [
-    {
-      id: 1,
-      listName: 'Todo'
-    },
-    {
-      id: 2,
-      listName: 'Doing'
-    },
-    {
-      id: 3,
-      listName: 'Done'
-    }
+    // {
+    //   id: 1,
+    //   listName: 'Todo'
+    // },
+    // {
+    //   id: 2,
+    //   listName: 'Doing'
+    // },
+    // {
+    //   id: 3,
+    //   listName: 'Done'
+    // }
   ];
 
   service.getLists = () =>  lists;
