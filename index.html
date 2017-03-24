@@ -15,7 +15,7 @@
         <form id="LogSig">
           <div class="inputAuth">
             <input type="text" placeholder="Login" ng-model="login">
-            <input type="password" placeholder="Password" ng-model="password" ">
+            <input type="password" placeholder="Password" ng-model="password" >
           </div>
           <div class="buttonAuth">
             <input type="button" value="Log In" ng-click="authorCtrl.LogIn(login, password)">
@@ -23,6 +23,9 @@
           </div>
 
         </form>
+
+        <button id="SaveAndExit" ng-click="authorCtrl.SaveAndExit()">Exit</button>
+
         <h2 id="login"> Login: {{login}}</h2>
       </header>
 

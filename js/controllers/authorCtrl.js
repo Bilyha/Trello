@@ -1,5 +1,4 @@
 angular.module('app').controller('authorCtrl', function ($http, serverFactory, $scope, cardFactory, listFactory ) {
-  // serverFactory.getPersons().then((result) => console.log(result.data))
 
     serverFactory.getPersons().then((result) => {
       let trueIndex;
@@ -38,6 +37,7 @@ angular.module('app').controller('authorCtrl', function ($http, serverFactory, $
               document.getElementById("forAuth").style.display="block";
               document.getElementById('LogSig').style.display="none";
               document.getElementById('login').style.display="inline-flex";
+              document.getElementById('SaveAndExit').style.display="inline-flex";
             }
           else
       			alert(' Wrong password or login \nIf you do not have an account \nPlease, Sign UP');
@@ -59,12 +59,27 @@ angular.module('app').controller('authorCtrl', function ($http, serverFactory, $
 
           listFactory.addListsFromServer(listsFromServer);
           cardFactory.addCardsFromServer(cardsFromServer);
-          document.getElementById("forAuth").style.display="block";
+          //document.getElementById("forAuth").style.display="block";
           serverFactory.postPersons( login, password);
+          location.reload(false);
+          alert('RegistrationOK, please LogIN')
 
         }
       }
 
+      this.SaveAndExit = () =>  {
+        this.lists = listFactory.getLists();
+        this.cards = cardFactory.getListofCards();
+
+        const li = this.lists;
+        const car = this.cards;
+        const pass = result.data[trueIndex].password;
+        const log = result.data[trueIndex].login;
+        console.log(`lists: ${li} Cards: ${car}  Login:${result.data[trueIndex].login} Password:${result.data[trueIndex].password}`)
+
+        serverFactory.postAndExit(li, car, pass, log);
+        location.reload(false);
+      }
     })
 
 });

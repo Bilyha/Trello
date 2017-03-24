@@ -58,11 +58,23 @@ app.get('/persons', function (require, res) {
 });
 
 app.post ('/persons', function (req, res) {
-	persons.push({
-		login: req.body.login,
-		password: req.body.password
+  if (req.body.flag) {
+    persons.push({
+      login: req.body.login,
+      password: req.body.password,
+      cards: req.body.cards,
+      lists: req.body.list
 
-	});
+    })
+  }
+  else {
+    persons.push({
+      login: req.body.log,
+      password: req.body.pass,
+      cards: req.body.car,
+      lists: req.body.li})
+  }
+
 	res.send(200);
 
 });

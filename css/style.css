@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: rgb(0, 121, 191);
+  min-width: 460px;
 }
 
 header {
@@ -36,6 +37,14 @@ header form {
   float: right;
 }
 
+header button {
+  float: right;
+  display: none;
+  border-color: #3788b7;
+    background-color: #3788b7;
+    border-radius: 6px;
+    font-weight: 600
+}
 
 
 .lists {
@@ -141,24 +150,11 @@ border: 1px solid black;
   display: none;
   float: right;
   padding: 5px;
-  margin: 10px 50px;
+  margin: 10px 20px;
   border-radius: 10px;
   color: #3f3b3b;
   background-color: #3788b7;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 angular.module('app').factory('cardFactory', function () {
   const service = {};
 
-  const cards = [
+   const cards = [
     // {
     //   id: 1,
     //   description: 'Fix some bugs',
@@ -20,9 +20,11 @@ angular.module('app').factory('cardFactory', function () {
     // }
   ];
 
+
+
   service.addCardsFromServer = (cardsFromServer) => cards.push(...cardsFromServer);
 
-  service.getCards = (list) => _.filter(cards, {list_id: list.id}); //lodash function, returning ab array of predicate returns truthy for list_id = list.id
+  service.getCards = list => _.filter(cards, {list_id: list.id}); //lodash function, returning ab array of predicate returns truthy for list_id = list.id
 
   service.createCard = (list, cardDescription) => {
     cards.push({
@@ -32,12 +34,17 @@ angular.module('app').factory('cardFactory', function () {
     });
   };
 
-  service.deleteCard = (card) =>  _.pull(cards, card);
+  service.deleteCard = card =>  _.pull(cards, card);
 
-  service.updateCard = (updatingCard) => {
+  service.updateCard = updatingCard => {
     const card = _.findWhere(cards, {id: updatingCard.id} );
     card.description = updatingCard.description;
     card.list_id = updatingCard.list_id;
   }
+
+service.getListofCards = () => cards;
+
+
+
   return service;
 });
