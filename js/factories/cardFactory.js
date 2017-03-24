@@ -20,6 +20,8 @@ angular.module('app').factory('cardFactory', function () {
     // }
   ];
 
+  service.addCardsFromServer = (cardsFromServer) => cards.push(...cardsFromServer);
+
   service.getCards = (list) => _.filter(cards, {list_id: list.id}); //lodash function, returning ab array of predicate returns truthy for list_id = list.id
 
   service.createCard = (list, cardDescription) => {

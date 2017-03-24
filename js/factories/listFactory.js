@@ -16,6 +16,8 @@ angular.module('app').factory('listFactory', function () {
     // }
   ];
 
+  service.addListsFromServer = listsFromServer => lists.push(...listsFromServer);
+
   service.getLists = () =>  lists;
 
   service.addList =  (listName) => {

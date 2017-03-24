@@ -1,8 +1,9 @@
-angular.module('app').controller('authorCtrl', function ($http, serverFactory, $scope ) {
+angular.module('app').controller('authorCtrl', function ($http, serverFactory, $scope, cardFactory, listFactory ) {
   // serverFactory.getPersons().then((result) => console.log(result.data))
-let persns;
-let loginMass = [];
+
     serverFactory.getPersons().then((result) => {
+      let trueIndex;
+      let loginMass = []; //for cheking exist's logins
       for ( let i = 0; i < result.data.length; i++)
       {
         loginMass.push(result.data[i].login);
@@ -14,12 +15,22 @@ let loginMass = [];
         for (let i = 0; i < result.data.length; i++)
           {
             if (login === result.data[i].login && password === result.data[i].password)
-              flag.push(true);
+              {
+                flag.push(true);
+                trueIndex = i; //index of flag's element that have true
+              }
             else
             {
               flag.push(false);
             }
           }
+          const cardsFromServer = result.data[trueIndex].cards;
+          const listsFromServer = result.data[trueIndex].lists;
+
+          listFactory.addListsFromServer(listsFromServer);
+          cardFactory.addCardsFromServer(cardsFromServer);
+
+
           console.log(flag);
           if ( flag.some(elem => elem === true))
       			{
@@ -30,6 +41,8 @@ let loginMass = [];
             }
           else
       			alert(' Wrong password or login \nIf you do not have an account \nPlease, Sign UP');
+
+
       };
 
       this.SignUp = function ( login, password) {
@@ -40,6 +53,12 @@ let loginMass = [];
           $scope.password = null;
         }
         else {
+
+          const cardsFromServer = [];
+          const listsFromServer = [];
+
+          listFactory.addListsFromServer(listsFromServer);
+          cardFactory.addCardsFromServer(cardsFromServer);
           document.getElementById("forAuth").style.display="block";
           serverFactory.postPersons( login, password);
 
